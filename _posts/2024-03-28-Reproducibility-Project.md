@@ -7,15 +7,18 @@ The first real-world optimization task which the paper addresses is that of a pe
 
 The author of this paper has built a PINN which can efficiently solve this problem. The network in question contains three hidden layers of 64 neurons each, with a tanh activation function at each layer. At the output layer, another tanh activation function is applied to the torque, but not to the angle of the pendulum. This network uses three loss functions: the physical loss, the constraint loss and the goal loss. These are calculated as follows:
 
-<img src= "https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/35ff7552-a78b-4374-9b89-bd62f68d92f5" height="50"> <br/>
-<img src= "https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/03dbf588-0bf6-44bb-9cf7-de0687bad8ce" height="50"> <br/>
-<img src= "https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/3fca6c3c-5002-48ef-a2b7-776b2ce4268f" height="30"> <br/>
-
+<center>
+  <img src= "https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/35ff7552-a78b-4374-9b89-bd62f68d92f5" height="50"> <br/>
+  <img src= "https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/03dbf588-0bf6-44bb-9cf7-de0687bad8ce" height="50"> <br/>
+  <img src= "https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/3fca6c3c-5002-48ef-a2b7-776b2ce4268f" height="30"> <br/>
+<center/>
 
 In physical loss function, we incorporate the function F. This is the governing equation. PINNs use governing equations in order to incorporate physical laws into their loss functions in order to penalize outputs which do not follow the relevant laws of physics. In this case, F is the equation of motion under gravity.
 
-<img src= "https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/16c9d969-fad7-4119-8256-f0e7e0cb040e" height="50"> <br/>
-
+<center>
+  <img src= "https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/16c9d969-fad7-4119-8256-f0e7e0cb040e" height="30"> <br/>
+<center/>
+  
 The constraint loss incorporates the boundary conditions of the problem and takes the initial conditions into account. These initial conditions are that the position and the angular velocity of the pendulum at time t=0 are 0. The goal loss tells the network that the position of the pendulum should be -1 at time t=10, in order to ensure that after 10 seconds, the pendulum is inverted.
 
 Each of these losses are then weighted in order to form a total loss. The weights of the physical and goal loss are 1, whereas the weight of the constraint loss is 10. These are hyperparameters set by the author of the paper. Now the architecture of the network and the elements of the loss function are clear, the optimization process starts. This paper applies Adam optimization for 5000 epochs with a learning rate of 0.02. After this, the author makes the unusual decision to switch to a different optimizer. L-BFGS optimization is carried out until convergence of the system. The paper produces the image on the left, where the angle of the pendulum and the torque are plotted against time, and this can be compared to our reproduction on the right.
@@ -25,7 +28,9 @@ Each of these losses are then weighted in order to form a total loss. The weight
 
 This shows that in our reproduction, the model does not converge when using Adam for 5000 epochs and subsequently using L-BFGS. We saw that Adam successfully lowered the loss until it stagnated around a total loss of 3, at which point L-BFGS optimization took over and caused the loss to increase to 80 and stay at this position. There was insufficient information in the paper in order to adjust the L-BFGS optimizer so that it would work in our reproduction. The decision was therefore made to remove the L-BFGS optimizer and continue using Adam until convergence. Once the L-BFGS optimizer was removed and the Adam optimizer was allowed to run for an increased number of iterations, the model converged after approximately 11,000 iterations. This is slightly longer than the amount of iterations it took in the original paper, which was said to be 9804 iterations, but this is attributed to their additional use of the L-BFGS optimizer.
 
-![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/fbd21380-4a54-4efc-a0c4-70a8f3c1fa4d)
+<center>
+  <img src= "https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/fbd21380-4a54-4efc-a0c4-70a8f3c1fa4d" width="350"> <br/>
+<center/>
 
 In figure 5, the variation in the learning curve was shown. This analysis was done in order to assess the stability of the network. First, the goal loss was plotted for five random seeds. Below, the results of the paper can be seen on the left and the results of our reproduction can be seen on the right. The shape of the reproduced plot matches the shape of the plot from the original paper. However, it is important to note that the goal loss is reduced much faster and more efficiently in the original paper compared to ours. This is strange, since the goal loss in the original paper is reduced almost to 0 within 5000 learning steps, which implies that Adam optimization alone should be able to reduce this loss. Our reproduction did not use the L-BFGS optimizer, but this optimizer is only applied after the first 5000 learning steps. Therefore, this discrepancy between our reproduction and the original paper cannot be due to the L-BFGS optimizer.
 
