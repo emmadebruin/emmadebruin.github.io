@@ -1,1 +1,2 @@
-## I am trying to make a blogpost
+## Solving real‑world optimization tasks using physics‑informed neural computing
+
