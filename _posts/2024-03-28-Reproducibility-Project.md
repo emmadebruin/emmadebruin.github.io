@@ -9,6 +9,8 @@ The first real-world optimization taks which the paper addresses is that of a pe
 
 ![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/03dbf588-0bf6-44bb-9cf7-de0687bad8ce)
 
+![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/3fca6c3c-5002-48ef-a2b7-776b2ce4268f)
+
 In these loss functions, we incorporate the function F. This is the governing equation. PINNs use governing equations in order to incorporate physical laws into their loss functions in order to penalize outputs which do not follow the relevant laws of physics. In this case, F is the equation of motion under gravity.
 
 ![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/16c9d969-fad7-4119-8256-f0e7e0cb040e)
