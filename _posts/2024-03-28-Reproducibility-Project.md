@@ -1,19 +1,11 @@
 ## Solving real‑world optimization tasks using physics‑informed neural computing
+# Physics-informed neural networks (PINNs)
 
 
+# Pendulum
 
-```tsql
-SELECT This, [Is], A, Code, Block -- Using SSMS style syntax highlighting
-    , REVERSE('abc')
-FROM dbo.SomeTable s
-    CROSS JOIN dbo.OtherTable o;
-```
+# Brachistone curve
 
-```powershell
-Write-Host "This is a powershell Code block";
+# Fermat's principle
 
-# There are many other languages you can use, but the style has to be loaded first
-
-ForEach ($thing in $things) {
-    Write-Output "It highlights it using the GitHub style"
-}
+# Swingby
