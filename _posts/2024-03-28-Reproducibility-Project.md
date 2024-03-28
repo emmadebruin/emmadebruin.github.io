@@ -8,12 +8,8 @@ The first real-world optimization task which the paper addresses is that of a pe
 The author of this paper has built a PINN which can efficiently solve this problem. The network in question contains three hidden layers of 64 neurons each, with a tanh activation function at each layer. At the output layer, another tanh activation function is applied to the torque, but not to the angle of the pendulum. This network uses three loss functions: the physical loss, the constraint loss and the goal loss. These are calculated as follows:
 
 <img src= "https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/35ff7552-a78b-4374-9b89-bd62f68d92f5" height="50"> <br/>
-
-
-<img src= "https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/03dbf588-0bf6-44bb-9cf7-de0687bad8ce" height="50">
-
-
-<img src= "https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/3fca6c3c-5002-48ef-a2b7-776b2ce4268f" height="50">
+<img src= "https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/03dbf588-0bf6-44bb-9cf7-de0687bad8ce" height="50"> <br/>
+<img src= "https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/3fca6c3c-5002-48ef-a2b7-776b2ce4268f" height="50"> <br/>
 
 
 In physical loss function, we incorporate the function F. This is the governing equation. PINNs use governing equations in order to incorporate physical laws into their loss functions in order to penalize outputs which do not follow the relevant laws of physics. In this case, F is the equation of motion under gravity.
