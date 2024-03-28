@@ -1,11 +1,11 @@
-## Solving real‑world optimization tasks using physics‑informed neural computing
-# Physics-informed neural networks (PINNs)
+# Solving real‑world optimization tasks using physics‑informed neural computing
+## Physics-informed neural networks (PINNs)
 
 
-# Pendulum
+## Pendulum
 
-# Brachistone curve
+## Brachistone curve
 
-# Fermat's principle
+## Fermat's principle
 
-# Swingby
+## Swingby
