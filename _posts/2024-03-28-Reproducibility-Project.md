@@ -14,7 +14,7 @@ The author of this paper has built a PINN which can efficiently solve this probl
 
 In physical loss function, we incorporate the function F. This is the governing equation. PINNs use governing equations in order to incorporate physical laws into their loss functions in order to penalize outputs which do not follow the relevant laws of physics. In this case, F is the equation of motion under gravity.
 
-![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/16c9d969-fad7-4119-8256-f0e7e0cb040e)
+<img src= "https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/16c9d969-fad7-4119-8256-f0e7e0cb040e" height="50"> <br/>
 
 The constraint loss incorporates the boundary conditions of the problem and takes the initial conditions into account. These initial conditions are that the position and the angular velocity of the pendulum at time t=0 are 0. The goal loss tells the network that the position of the pendulum should be -1 at time t=10, in order to ensure that after 10 seconds, the pendulum is inverted.
 
