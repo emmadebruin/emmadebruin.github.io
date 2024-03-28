@@ -15,9 +15,13 @@ In figure 5, the variation in the learning curve was shown. First, the goal loss
 ![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/bd4658ee-4823-43e4-8fb8-45bde09a2575)
 
 Our reproduction also implemented 5 random seeds, which gave the following plot:
+![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/b774f0d2-9ba9-44a3-ae21-98441cdce504)
+
 
 The same was done for the angle of the pendulum. Side by side, the figure produced by the original paper and the figure that we reproduced were as follows:
 ![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/6141b447-facb-4e54-bc19-b814031e6025)
+![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/1b87d5a6-9074-47fa-b6a7-0c1617e7199f)
+
 
 
 
