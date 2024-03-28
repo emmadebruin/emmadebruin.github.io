@@ -13,11 +13,13 @@ The author of this paper has built a PINN which can efficiently solve this probl
 
 ![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/3fca6c3c-5002-48ef-a2b7-776b2ce4268f)
 
-In these loss functions, we incorporate the function F. This is the governing equation. PINNs use governing equations in order to incorporate physical laws into their loss functions in order to penalize outputs which do not follow the relevant laws of physics. In this case, F is the equation of motion under gravity.
+In physical loss function, we incorporate the function F. This is the governing equation. PINNs use governing equations in order to incorporate physical laws into their loss functions in order to penalize outputs which do not follow the relevant laws of physics. In this case, F is the equation of motion under gravity.
 
 ![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/16c9d969-fad7-4119-8256-f0e7e0cb040e)
 
-Each of these are weighted in order to form a total loss. The weights of the physical and goal loss are 1, whereas the weight of the constraint loss is 10. These are hyperparameters set by the author of the paper. Now the architecture of the network and the elements of the loss function are clear, the optimization process starts. This paper applies Adam optimization for 5000 epochs with a learning rate of 0.02. After this, the author makes the unusual decision to switch to a different optimizer. L-BFGS optimization is carried out until convergence of the system. The paper produces the image on the left, where the angle of the pendulum and the torque are plotted against time, and this can be compared to our reproduction on the right.
+The constraint loss incorporates the boundary conditions of the problem and takes the initial conditions into account. These initial conditions are that the position and the angular velocity of the pendulum at time t=0 are 0. The goal loss tells the network that the position of the pendulum should be -1 at time t=10, in order to ensure that after 10 seconds, the pendulum is inverted.
+
+Each of these losses are then weighted in order to form a total loss. The weights of the physical and goal loss are 1, whereas the weight of the constraint loss is 10. These are hyperparameters set by the author of the paper. Now the architecture of the network and the elements of the loss function are clear, the optimization process starts. This paper applies Adam optimization for 5000 epochs with a learning rate of 0.02. After this, the author makes the unusual decision to switch to a different optimizer. L-BFGS optimization is carried out until convergence of the system. The paper produces the image on the left, where the angle of the pendulum and the torque are plotted against time, and this can be compared to our reproduction on the right.
 
 ![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/0a0f63d8-eaa0-4d7d-9b4a-3f0163460b6b)
 ![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/d500c284-07fa-4018-a9e4-35029068aa28) 
