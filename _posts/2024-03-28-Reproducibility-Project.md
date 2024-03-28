@@ -9,7 +9,7 @@ The author of this paper has built a PINN which can efficiently solve this probl
 
 <img src= "https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/35ff7552-a78b-4374-9b89-bd62f68d92f5" height="50"> <br/>
 <img src= "https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/03dbf588-0bf6-44bb-9cf7-de0687bad8ce" height="50"> <br/>
-<img src= "https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/3fca6c3c-5002-48ef-a2b7-776b2ce4268f" height="50"> <br/>
+<img src= "https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/3fca6c3c-5002-48ef-a2b7-776b2ce4268f" height="30"> <br/>
 
 
 In physical loss function, we incorporate the function F. This is the governing equation. PINNs use governing equations in order to incorporate physical laws into their loss functions in order to penalize outputs which do not follow the relevant laws of physics. In this case, F is the equation of motion under gravity.
