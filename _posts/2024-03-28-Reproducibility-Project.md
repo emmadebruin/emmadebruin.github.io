@@ -23,9 +23,18 @@ The same was done for the angle of the pendulum. Side by side, the figure produc
 
 
 ## Brachistone curve
+The figure that can be seen in the original paper can be viewed below.
+![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/f64f045b-f964-4a17-a007-55b21ab0fbd7)
+
 
 ## Fermat's principle
+The figure in the original paper that we aimed to reproduce can be seen below.
+![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/d956d071-b40a-40c2-80b9-10bf4779c99f)
+
 
 ## Swingby
+The author of this paper produced the following figures for this problem:
+![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/d6ac0116-7ca8-4aa6-bddb-98c913afc2dd)
+
 
 ## Conclusion
