@@ -11,13 +11,13 @@ The author of this paper has built a PINN which can efficiently solve this probl
   <img src= "https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/35ff7552-a78b-4374-9b89-bd62f68d92f5" height="50"> <br/>
   <img src= "https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/03dbf588-0bf6-44bb-9cf7-de0687bad8ce" height="50"> <br/>
   <img src= "https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/3fca6c3c-5002-48ef-a2b7-776b2ce4268f" height="30"> <br/>
-<center/>
+</center>
 
 In physical loss function, we incorporate the function F. This is the governing equation. PINNs use governing equations in order to incorporate physical laws into their loss functions in order to penalize outputs which do not follow the relevant laws of physics. In this case, F is the equation of motion under gravity.
 
 <center>
   <img src= "https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/16c9d969-fad7-4119-8256-f0e7e0cb040e" height="30"> <br/>
-<center/>
+</center>
   
 The constraint loss incorporates the boundary conditions of the problem and takes the initial conditions into account. These initial conditions are that the position and the angular velocity of the pendulum at time t=0 are 0. The goal loss tells the network that the position of the pendulum should be -1 at time t=10, in order to ensure that after 10 seconds, the pendulum is inverted.
 
@@ -30,18 +30,17 @@ This shows that in our reproduction, the model does not converge when using Adam
 
 <center>
   <img src= "https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/fbd21380-4a54-4efc-a0c4-70a8f3c1fa4d" width="350"> <br/>
-<center/>
+</center>
 
 In figure 5, the variation in the learning curve was shown. This analysis was done in order to assess the stability of the network. First, the goal loss was plotted for five random seeds. Below, the results of the paper can be seen on the left and the results of our reproduction can be seen on the right. The shape of the reproduced plot matches the shape of the plot from the original paper. However, it is important to note that the goal loss is reduced much faster and more efficiently in the original paper compared to ours. This is strange, since the goal loss in the original paper is reduced almost to 0 within 5000 learning steps, which implies that Adam optimization alone should be able to reduce this loss. Our reproduction did not use the L-BFGS optimizer, but this optimizer is only applied after the first 5000 learning steps. Therefore, this discrepancy between our reproduction and the original paper cannot be due to the L-BFGS optimizer.
 
-![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/bd4658ee-4823-43e4-8fb8-45bde09a2575)
-![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/b774f0d2-9ba9-44a3-ae21-98441cdce504)
-
+<img src="https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/bd4658ee-4823-43e4-8fb8-45bde09a2575" width="500">
+<img src="https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/b774f0d2-9ba9-44a3-ae21-98441cdce504" width="500"><br/>
 
 The same was done for the angle of the pendulum. Five random seeds were used and the model was run once with each seed. Side by side, the figure produced by the original paper and the figure that we reproduced were as shown below. It is remarkable that while the two figures look alike, there is a significant difference. In the original paper, some of the seeds lead to large positive or negative angles, and do not converge. In our reproduction, the angles seem to remain within the inner dotted red lines drawn on the figure from the paper.
 
-![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/6141b447-facb-4e54-bc19-b814031e6025)
-![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/1b87d5a6-9074-47fa-b6a7-0c1617e7199f)
+<img src="https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/6141b447-facb-4e54-bc19-b814031e6025" width="500">
+<img src="https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/1b87d5a6-9074-47fa-b6a7-0c1617e7199f" width="500">
 
 
 ## Brachistone curve
