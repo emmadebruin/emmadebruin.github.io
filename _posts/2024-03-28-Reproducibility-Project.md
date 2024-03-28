@@ -20,6 +20,8 @@ Each of these are weighted in order to form a total loss. The weights of the phy
 ![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/0a0f63d8-eaa0-4d7d-9b4a-3f0163460b6b)
 <img src="https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/0a0f63d8-eaa0-4d7d-9b4a-3f0163460b6b" width="48">
 ![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/d500c284-07fa-4018-a9e4-35029068aa28)
+<img src="https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/d500c284-07fa-4018-a9e4-35029068aa28" width="48">
+
 
 This shows that the model does not converge when using Adam for 5000 epochs and subsequently using L-BFGS. There was insufficient information in the paper in order to adjust the L-BFGS optimizer so that it would work in our reproduction. The decision was therefore made to remove the L-BFGS optimizer and continue using Adam until convergence. Once the L-BFGS optimizer was removed and the Adam optimizer was allowed to run for a longer amount of iterations, the model converged after approximately 11,000 iterations. This is slightly longer than the time it took in the original paper, but this is attributed to their addition use of the L-BFGS optimizer.
 
