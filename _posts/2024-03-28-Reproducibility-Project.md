@@ -54,27 +54,30 @@ The figure in the original paper that we aimed to reproduce can be seen below.
 
 
 ## Swingby
-The Last real-world optimization task  the paper addresses is that of a Swingby trajectory. A situation is sketched where a "rocket" of mass 1 kg is traveling by 3 celestial bodys with different positions and different masses. to which a maximum position (x,y) of ...  can be applied. The aim of the system is to minimize the additional thrust needed to propell the rocket. The forces acting upon the rocket are important, as this can give the system information about the how much thrust has to be applied, ... uitleg formule 
+The final real-world optimization task addressed in the paper concerns a Swingby trajectory. The scenario outlines a situation where a "rocket" with a mass of 1 kg traverses three celestial bodies with varying positions and masses. The objective of the system is to minimize the additional thrust required to propel the rocket. Understanding the forces acting upon the rocket is crucial, as they provide insight into the amount of thrust needed.
 
-The author of this paper has built a PINN which can efficiently solve this problem. The network in question contains three hidden layers of 64 neurons each, with a tanh activation function at each layer. At the output layer, another tanh activation function is applied. This network uses two loss functions: the physical loss and the constraint loss, the goal loss is .... . These are calculated with the formulas shown above.
+The author of this paper has developed a Physics-Informed Neural Network (PINN) capable of efficiently solving this problem. The network architecture comprises three hidden layers, each consisting of 64 neurons employing a tanh activation function. Another tanh activation function is applied at the output layer. This network employs two loss functions: the physical loss and the constraint loss, computed using the provided formulas.
 
 In the case of the swingby trajectory, the physical loss function,  F is the equation for a thrust vector under gravitational foces: 
 
 ![image](https://github.com/stevengdemunck/docs/blob/main/assets/css/Screenshot%202024-04-08%20at%2022.50.59.png)
 
-in our case, the constraint loss incorporates the boundary conditions of the problem and takes the initial conditions into account. These initial conditions are that the position starts at (x0,y0) = (-1,-1) at t=0 are and ends at (x1,y1) = (1,1).
+In our case, the constraint loss incorporates the boundary conditions of the problem and takes the initial conditions into account. These initial conditions are that the position starts at (x0,y0) = (-1,-1) at t=0 are and ends at (x1,y1) = (1,1).
 
-Each of these losses are then weighted in order to form a total loss. The weights of the physical and constrait loss are 1. These are hyperparameters set by the author of the paper. Now the architecture of the network and the elements of the loss function are clear, the optimization process starts. This paper applies Adam optimization for 2000 epochs with a learning rate of 0.001. After this, the author makes the unusual decision to switch to a different optimizer. L-BFGS optimization is carried out until convergence of the system. The paper produces the image on the below, where the path is layed out and different grasvitational forces and the thrust are plotted against the time. 
+Each of these losses is then assigned weights to formulate a total loss. The weights for the physical and constraint losses are both set to 1, serving as hyperparameters determined by the author. Initially, Adam optimization is applied for 2000 epochs with a learning rate of 0.001. The paper presents the image below, showing the path taken and plotting different gravitational forces and thrust against time.
 
 ![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/d6ac0116-7ca8-4aa6-bddb-98c913afc2dd)
 
-as with the pendulum reproduction, the combination of L-BFGS and Adam would not work. after adjusting the learning rate to 3*10^-3 and increasing the number of epochs to 60000 it did we were able to reproduce similar results. 
+Similar to the pendulum reproduction scenario, the combination of L-BFGS and Adam proved ineffective. However, by adjusting the learning rate to 3*10^-3 and extending the number of epochs to 60000, we managed to replicate similar results.
 
+This first image shows the optimal path that should be taken to minimze thrust.
 ![image](https://github.com/stevengdemunck/docs/blob/main/assets/css/Figure_1.png)
+This image shows the total gravitational forces over time. When the rocket is closest to a celestial body, it experiences higher gravitational forces. 
 ![image](https://github.com/stevengdemunck/docs/blob/main/assets/css/gravity.png)
+Here, the the total amount of force required to take the path over time is plotted
 ![image](https://github.com/stevengdemunck/docs/blob/main/assets/css/Figure_6.png)
+Finally the total amount of added thrust is plotted over time. The values we obtained are higher when compared to the grapgh shown in the paper, this could be due to the fact that we did not implement the L-BGFS. 
 ![image](https://github.com/stevengdemunck/docs/blob/main/assets/css/Figure_7.png)
-
 
 ## Conclusion
 
