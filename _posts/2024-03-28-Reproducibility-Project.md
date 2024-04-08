@@ -63,7 +63,7 @@ The constraint loss incorporates the boundary conditions of the problem and take
 Each of these losses are then weighted in order to form a total loss. The weights of the physical and constrait loss are 1. These are hyperparameters set by the author of the paper. Now the architecture of the network and the elements of the loss function are clear, the optimization process starts. This paper applies Adam optimization for 2000 epochs with a learning rate of 0.001. After this, the author makes the unusual decision to switch to a different optimizer. L-BFGS optimization is carried out until convergence of the system. The paper produces the image on the below, where ....
 
 The author of this paper produced the following figures for this problem:
-
+![image](https://github.com/stevengdemunck/docs/tree/main/assets/css#:~:text=..-,Figure_1.png,-Add%20files%20via)
 ![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/d6ac0116-7ca8-4aa6-bddb-98c913afc2dd)
 
 
