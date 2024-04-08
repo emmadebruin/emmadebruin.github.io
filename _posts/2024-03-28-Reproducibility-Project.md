@@ -58,13 +58,22 @@ The Last real-world optimization task  the paper addresses is that of a Swingby 
 
 The author of this paper has built a PINN which can efficiently solve this problem. The network in question contains three hidden layers of 64 neurons each, with a tanh activation function at each layer. At the output layer, another tanh activation function is applied. This network uses two loss functions: the physical loss and the constraint loss, the goal loss is .... . These are calculated with the formulas shown above.
 
-The constraint loss incorporates the boundary conditions of the problem and takes the initial conditions into account. These initial conditions are that the position starts at (x0,y0) = (-1,-1) at t=0 are and ends at (x1,y1) = (1,1).
+In the case of the swingby trajectory, the physical loss function,  F is the equation for a thrust vector under gravitational foces: 
 
-Each of these losses are then weighted in order to form a total loss. The weights of the physical and constrait loss are 1. These are hyperparameters set by the author of the paper. Now the architecture of the network and the elements of the loss function are clear, the optimization process starts. This paper applies Adam optimization for 2000 epochs with a learning rate of 0.001. After this, the author makes the unusual decision to switch to a different optimizer. L-BFGS optimization is carried out until convergence of the system. The paper produces the image on the below, where ....
+![image](https://github.com/stevengdemunck/docs/blob/main/assets/css/Screenshot%202024-04-08%20at%2022.50.59.png)
 
-The author of this paper produced the following figures for this problem:
-![image](https://github.com/stevengdemunck/docs/blob/main/assets/css/Figure_1.png)
+in our case, the constraint loss incorporates the boundary conditions of the problem and takes the initial conditions into account. These initial conditions are that the position starts at (x0,y0) = (-1,-1) at t=0 are and ends at (x1,y1) = (1,1).
+
+Each of these losses are then weighted in order to form a total loss. The weights of the physical and constrait loss are 1. These are hyperparameters set by the author of the paper. Now the architecture of the network and the elements of the loss function are clear, the optimization process starts. This paper applies Adam optimization for 2000 epochs with a learning rate of 0.001. After this, the author makes the unusual decision to switch to a different optimizer. L-BFGS optimization is carried out until convergence of the system. The paper produces the image on the below, where the path is layed out and different grasvitational forces and the thrust are plotted against the time. 
+
 ![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/d6ac0116-7ca8-4aa6-bddb-98c913afc2dd)
+
+as with the pendulum reproduction, the combination of L-BFGS and Adam would not work. after adjusting the learning rate to 3*10^-3 and increasing the number of epochs to 60000 it did we were able to reproduce similar results. 
+
+![image](https://github.com/stevengdemunck/docs/blob/main/assets/css/Figure_1.png)
+![image](https://github.com/stevengdemunck/docs/blob/main/assets/css/gravity.png)
+![image](https://github.com/stevengdemunck/docs/blob/main/assets/css/Figure_6.png)
+![image](https://github.com/stevengdemunck/docs/blob/main/assets/css/Figure_7.png)
 
 
 ## Conclusion
