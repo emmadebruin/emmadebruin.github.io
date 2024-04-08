@@ -54,6 +54,11 @@ The figure in the original paper that we aimed to reproduce can be seen below.
 
 
 ## Swingby
+The Last real-world optimization task  the paper addresses is that of a Swingby trajectory. A situation is sketched where a "rocket" of mass 1 kg is traveling by 3 celestial bodys with different positions and different masses. to which a maximum position (x,y) of ...  can be applied. The aim of the system is to minimize the additional thrust needed to propell the rocket. The forces acting upon the rocket are important, as this can give the system information about the how much thrust has to be applied, ... uitleg formule 
+
+The author of this paper has built a PINN which can efficiently solve this problem. The network in question contains three hidden layers of 64 neurons each, with a tanh activation function at each layer. At the output layer, another tanh activation function is applied. This network uses two loss functions: the physical loss and the constraint loss, the goal loss is .... . These are calculated with the formulas shown above.
+
+
 The author of this paper produced the following figures for this problem:
 
 ![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/d6ac0116-7ca8-4aa6-bddb-98c913afc2dd)
