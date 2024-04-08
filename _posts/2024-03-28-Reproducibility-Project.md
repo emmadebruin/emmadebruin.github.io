@@ -58,6 +58,9 @@ The Last real-world optimization task  the paper addresses is that of a Swingby 
 
 The author of this paper has built a PINN which can efficiently solve this problem. The network in question contains three hidden layers of 64 neurons each, with a tanh activation function at each layer. At the output layer, another tanh activation function is applied. This network uses two loss functions: the physical loss and the constraint loss, the goal loss is .... . These are calculated with the formulas shown above.
 
+The constraint loss incorporates the boundary conditions of the problem and takes the initial conditions into account. These initial conditions are that the position starts at (x0,y0) = (-1,-1) at t=0 are and ends at (x1,y1) = (1,1).
+
+Each of these losses are then weighted in order to form a total loss. The weights of the physical and constrait loss are 1. These are hyperparameters set by the author of the paper. Now the architecture of the network and the elements of the loss function are clear, the optimization process starts. This paper applies Adam optimization for 2000 epochs with a learning rate of 0.001. After this, the author makes the unusual decision to switch to a different optimizer. L-BFGS optimization is carried out until convergence of the system. The paper produces the image on the below, where ....
 
 The author of this paper produced the following figures for this problem:
 
