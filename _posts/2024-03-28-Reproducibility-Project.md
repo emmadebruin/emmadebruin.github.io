@@ -49,29 +49,29 @@ The figure that can be seen in the original paper can be viewed below.
 A physics informed neural network (PINN) is programmed to solve the problem of finding the shortest-time path connecting two given points were an analytical solution exits. For this, two experiments were conducted: Light path of the shortest time according to Fermat’s principle and the shortest time path under gravity according to the Brachistochrone curve. 
 The 2D xy space contain a medium with a varying refractive index which has a sinusoidal profile with respect to the y-axis. Fermat’s principle states that light travels slower in a medium that contains a higher refractive index and that light travels between two points along the path that requires the least time [1]. In our experiment the refractive index is highest in the middle of the y-plane which would result in the light taking a more vertical direction. To find the shortest-time path using PINN the following governing equation is given by [1]
 
-![image](flight.png)
+![image](/images/flight.png)
 
 In case of the bird, the 2D xy space consists of a space where normal gravity applies and the bird can gain speed with gravitational energy only. Thus to get as quickly from the initial point (x0, y0) as (0, 1) to (1, 0) the bird is expected to follow brachistochrone path, which is not the shortest path distance wise but is the shortest path considering time as the bird is able to optimise the gaining of speed and the travelled distance. To find the shortest-time path that the bird should take using PINN the following governing equation is given by [1]
 
-![image](fbird.png)
+![image](/images/fbird.png)
 
 These governing equations are then used in the following equation to calculate the physical loss to minimise for each experiment
 
-![image](lbird_phys.png)
+![image](/images/lbird_phys.png)
 
 The boundary loss is calculated using Dirichlet boundary conditions, these imply a certain penalty for errors at given coordinates in the solution. For the two experiments these consist solely of the start and destination coordinates, so that the boundary loss aims to ensure a correct initial and final position. This is implemented using the following formula, where BC represents the boundary condition coordinates and u corresponds to either the initial (x, y) or the final (x, y)
 
-![image](lbird_bc.png)
+![image](/images/lbird_bc.png)
 
 The goal loss, which is used to find the solution that has the lowest loss in terms of the defined goal is given as
 
-![image](lbird_goal.png)
+![image](/images/lbird_goal.png)
 
 where T is the total time to reach the destination point
 
 All losses are then combined in the following equation, which aims to minimise the total combined loss, the weights are equal for both the experiments and are given as (1, 1, 0.01), respectively.
 
-![image](lbird_argmin.png)
+![image](/images/lbird_argmin.png)
 
 To determine the shortest-time path by using PINN, the initial conditions for the network are set. The time is normalized between 0 and 1, with an appropriate uniform grid such that a 1000 time points are present in the given domain. We created a small function which can add more points on the boundary points to aid in model training, were we ensured that more training points near the boundary still had all nonzero time positional derivatives.
 
@@ -87,9 +87,9 @@ After having trained the PINN neural network, it is trained with a L-BFGS optimi
 
 Using our trained PINN to generate the timepoints a 0 to 1 scale with a grid of a 100 total points yields the following two figures. What can be observed is that the bird shortest path deviates significantly form the analytical solution and does also not reach the final coordinate appropriately. The experiment with the shortest light path time yields an extremely similar final result when compared to the analytical solution. As we noted this difference, we rewrote our code to have a shared code base such that only the governing equation and boundary conditions differ, we then also ensured that all matrix computations gave the expected outputs and dimensions, and after correcting several issues, this still yielded the final plots as used in this blog. We have therefore concluded that we were unable to replicate the results for the bird.
 
-![image](bird.png) ![image](light.png)
+![image](/images/bird.png) ![image](/images/light.png)
 
-![image](bird_loss.png) ![image](light_loss.png)
+![image](/images/bird_loss.png) ![image](/images/light_loss.png)
 
 
 ## Swingby
