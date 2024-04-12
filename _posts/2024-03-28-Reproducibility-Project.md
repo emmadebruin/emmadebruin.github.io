@@ -110,7 +110,7 @@ Similar to the pendulum reproduction scenario, the combination of L-BFGS and Ada
 
 This first image shows the optimal path that should be taken to minimze thrust.
 
-![image](https://github.com/emmadebruin/emmadebruin.github.io/blob/main/images/Figure_1.png)
+![image](/images/Figure_1.png)
 
 This image shows the total gravitational forces over time. When the rocket is closest to a celestial body, it experiences higher gravitational forces. 
 
