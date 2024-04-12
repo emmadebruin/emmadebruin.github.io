@@ -130,8 +130,11 @@ In this blog, we successfully reproduced four experiments shown in the paper "So
 
 ## Individual contributions
 Emma de Bruin: responsible for full-reimplementation of the inverting pendulum PINN and writing the associated blog section, as well as the introduction as the conclusion regarding the pendulum.
+
 Steven de Munck: responsible for full-reimplementation of the swingby PINN and writing the associated blog section, as well as the conclusion regarding the swingby.
+
 Sake Salverda: responsible for full-reimplementation of the Brachistochrone curve PINN and writing the associated blog section, as well as the conclusion regarding the Brachistochrone curve.
+
 Nick Hanenberg: responsible for full-reimplementation of the Fermat's principle PINN and writing the associated blog section, as well as the conclusion regarding Fermat's principle.
 
 ### References
