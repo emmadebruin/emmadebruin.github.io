@@ -110,22 +110,26 @@ Similar to the pendulum reproduction scenario, the combination of L-BFGS and Ada
 
 This first image shows the optimal path that should be taken to minimze thrust.
 
-![image](https://github.com/stevengdemunck/docs/blob/main/assets/css/Figure_1.png)
+![image](https://github.com/emmadebruin/emmadebruin.github.io/blob/main/images/Figure_1.png)
 
 This image shows the total gravitational forces over time. When the rocket is closest to a celestial body, it experiences higher gravitational forces. 
 
-![image](https://github.com/stevengdemunck/docs/blob/main/assets/css/gravity.png)
+![image](https://github.com/emmadebruin/emmadebruin.github.io/blob/main/images/gravity.png)
 
 Here, the the total amount of force required to take the path over time is plotted
 
-![image](https://github.com/stevengdemunck/docs/blob/main/assets/css/Figure_6.png)
+![image](https://github.com/emmadebruin/emmadebruin.github.io/blob/main/images/Figure_6.png)
 
 Finally the total amount of added thrust is plotted over time. The values we obtained are higher when compared to the grapgh shown in the paper, this could be due to the fact that we did not implement the L-BGFS. 
 
-![image](https://github.com/stevengdemunck/docs/blob/main/assets/css/Figure_7.png)
+![image](https://github.com/emmadebruin/emmadebruin.github.io/blob/main/images/Figure_7.png)
 
 ## Conclusion
 In this blog, we successfully reproduced four experiments shown in the paper "Solving real-world optimization tasks using physics-informed neural computing" by Jaemin Seo. We looked at the use of PINNs in four different scenarios: inverting a pendulum, the brachistoschrone curve, Fermat's principle and a swingby. In the first situation, our reproduction could not achieve the same results as this paper due to lack of information regarding how the author applied the L-BFGS optimizer after applying the Adam optimizer. However, similar results were obtained after removing the L-BFGS optimizer and allowing Adam to run for more epochs. This shows that a PINN can indeed successfully be used in order to calculate the torque required to invert a pendulum at a specific time. However, the efficiency of the PINN may depend on the optimizer or optimizers used. The stability of this PINN was also tested using different seeds, and it was seen that the system converges in all cases. This conclusion can be drawn since the networks which finish at a position of approximately -3 radians finish at the same position as those that reach +3 radians. Both positions result in an inverted pendulum, which shows us that the PINN is very stable. It seems in this paper to be more stable than in the paper written by Seo.
+
+In the last situation, we could not exactly replicate the swingby trajectory, but got closeby. this was again due to the lack of information about the L-BFGS implementation. by running the Adam optimiser for more epochs did result in quite similar results. our network was not able to minimize thrust to a neglegible amount, but it was certainly quite close. 
+
+
 
 ## Individual contributions
 Emma de Bruin: responsible for full-reimplementation of the inverting pendulum PINN and writing the associated blog section, as well as the introduction as the conclusion regarding the pendulum.
