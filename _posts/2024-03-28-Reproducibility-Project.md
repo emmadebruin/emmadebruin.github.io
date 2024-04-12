@@ -41,7 +41,7 @@ The same was done for the angle of the pendulum. Five random seeds were used and
 <img src="https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/1b87d5a6-9074-47fa-b6a7-0c1617e7199f" width="650">
 
 
-## Brachistone curve and Fermat's principle
+## Brachistochrone curve and Fermat's principle
 The figure that can be seen in the original paper can be viewed below.
 ![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/f64f045b-f964-4a17-a007-55b21ab0fbd7)
 ![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/d956d071-b40a-40c2-80b9-10bf4779c99f)
@@ -126,6 +126,7 @@ Finally the total amount of added thrust is plotted over time. The values we obt
 ![image](https://github.com/stevengdemunck/docs/blob/main/assets/css/Figure_7.png)
 
 ## Conclusion
+In this blog, we successfully reproduced four experiments shown in the paper "Solving real-world optimization tasks using physics-informed neural computing" by Jaemin Seo. We looked at the use of PINNs in four different scenarios: inverting a pendulum, the brachistoschrone curve, Fermat's principle and a swingby. In the first situation, our reproduction could not achieve the same results as this paper due to lack of information regarding how the author applied the L-BFGS optimizer after applying the Adam optimizer. However, similar results were obtained after removing the L-BFGS optimizer and allowing Adam to run for more epochs. This shows that a PINN can indeed successfully be used in order to calculate the torque required to invert a pendulum at a specific time. However, the efficiency of the PINN may depend on the optimizer or optimizers used. The stability of this PINN was also tested using different seeds, and it was seen that the system converges in all cases. This conclusion can be drawn since the networks which finish at a position of approximately -3 radians finish at the same position as those that reach +3 radians. Both positions result in an inverted pendulum, which shows us that the PINN is very stable. It seems in this paper to be more stable than in the paper written by Seo.
 
 ### References
 [1] J. Seo, “Solving real-world optimization tasks using physics-informed neural computing,” Scientific Reports, vol. 14, no. 1, Jan. 2024, doi: 10.1038/s41598-023-49977-3.
