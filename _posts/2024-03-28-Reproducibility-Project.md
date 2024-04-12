@@ -128,6 +128,12 @@ Finally the total amount of added thrust is plotted over time. The values we obt
 ## Conclusion
 In this blog, we successfully reproduced four experiments shown in the paper "Solving real-world optimization tasks using physics-informed neural computing" by Jaemin Seo. We looked at the use of PINNs in four different scenarios: inverting a pendulum, the brachistoschrone curve, Fermat's principle and a swingby. In the first situation, our reproduction could not achieve the same results as this paper due to lack of information regarding how the author applied the L-BFGS optimizer after applying the Adam optimizer. However, similar results were obtained after removing the L-BFGS optimizer and allowing Adam to run for more epochs. This shows that a PINN can indeed successfully be used in order to calculate the torque required to invert a pendulum at a specific time. However, the efficiency of the PINN may depend on the optimizer or optimizers used. The stability of this PINN was also tested using different seeds, and it was seen that the system converges in all cases. This conclusion can be drawn since the networks which finish at a position of approximately -3 radians finish at the same position as those that reach +3 radians. Both positions result in an inverted pendulum, which shows us that the PINN is very stable. It seems in this paper to be more stable than in the paper written by Seo.
 
+## Individual contributions
+Emma de Bruin: responsible for full-reimplementation of the inverting pendulum PINN and writing the associated blog section, as well as the introduction as the conclusion regarding the pendulum.
+Steven de Munck: responsible for full-reimplementation of the swingby PINN and writing the associated blog section, as well as the conclusion regarding the swingby.
+Sake Salverda: responsible for full-reimplementation of the Brachistochrone curve PINN and writing the associated blog section, as well as the conclusion regarding the Brachistochrone curve.
+Nick Hanenberg: responsible for full-reimplementation of the Fermat's principle PINN and writing the associated blog section, as well as the conclusion regarding Fermat's principle.
+
 ### References
 [1] J. Seo, “Solving real-world optimization tasks using physics-informed neural computing,” Scientific Reports, vol. 14, no. 1, Jan. 2024, doi: 10.1038/s41598-023-49977-3.
 
