@@ -23,7 +23,9 @@ The constraint loss incorporates the boundary conditions of the problem and take
 
 Each of these losses are then weighted in order to form a total loss. The weights of the physical and goal loss are 1, whereas the weight of the constraint loss is 10. These are hyperparameters set by the author of the paper. Now the architecture of the network and the elements of the loss function are clear, the optimization process starts. This paper applies Adam optimization for 5000 epochs with a learning rate of 0.02. After this, the author makes the unusual decision to switch to a different optimizer. L-BFGS optimization is carried out until convergence of the system. The paper produces the image on the left, where the angle of the pendulum and the torque are plotted against time, and this can be compared to our reproduction on the right.
 
+<center>
 <img src="https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/0a0f63d8-eaa0-4d7d-9b4a-3f0163460b6b" width="250"> <img src="https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/d500c284-07fa-4018-a9e4-35029068aa28" width="350">
+</center>
 
 This shows that in our reproduction, the model does not converge when using Adam for 5000 epochs and subsequently using L-BFGS. We saw that Adam successfully lowered the loss until it stagnated around a total loss of 3, at which point L-BFGS optimization took over and caused the loss to increase to 80 and stay at this position. There was insufficient information in the paper in order to adjust the L-BFGS optimizer so that it would work in our reproduction. The decision was therefore made to remove the L-BFGS optimizer and continue using Adam until convergence. Once the L-BFGS optimizer was removed and the Adam optimizer was allowed to run for an increased number of iterations, the model converged after approximately 11,000 iterations. This is slightly longer than the amount of iterations it took in the original paper, which was said to be 9804 iterations, but this is attributed to their additional use of the L-BFGS optimizer.
 
@@ -33,12 +35,15 @@ This shows that in our reproduction, the model does not converge when using Adam
 
 In figure 5, the variation in the learning curve was shown. This analysis was done in order to assess the stability of the network. First, the goal loss was plotted for five random seeds. Below, the results of the paper can be seen on the left and the results of our reproduction can be seen on the right. The shape of the reproduced plot matches the shape of the plot from the original paper. However, it is important to note that the goal loss is reduced much faster and more efficiently in the original paper compared to ours. This is strange, since the goal loss in the original paper is reduced almost to 0 within 5000 learning steps, which implies that Adam optimization alone should be able to reduce this loss. Our reproduction did not use the L-BFGS optimizer, but this optimizer is only applied after the first 5000 learning steps. Therefore, this discrepancy between our reproduction and the original paper cannot be due to the L-BFGS optimizer.
 
-<img src="https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/bd4658ee-4823-43e4-8fb8-45bde09a2575" width="200"> <img src="https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/b774f0d2-9ba9-44a3-ae21-98441cdce504" width="600"><br/>
+<center>
+<img src="https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/bd4658ee-4823-43e4-8fb8-45bde09a2575" width="250"> <img src="https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/b774f0d2-9ba9-44a3-ae21-98441cdce504" width="350"><br/>
+</center>
 
 The same was done for the angle of the pendulum. Five random seeds were used and the model was run once with each seed. Side by side, the figure produced by the original paper and the figure that we reproduced were as shown below. It is remarkable that while the two figures look alike, there is a significant difference. In the original paper, some of the seeds lead to large positive or negative angles, and do not converge. In our reproduction, the angles seem to remain within the inner dotted red lines drawn on the figure from the paper.
 
+<center>
 <img src="https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/6141b447-facb-4e54-bc19-b814031e6025" width="250"> <img src="https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/1b87d5a6-9074-47fa-b6a7-0c1617e7199f" width="350">
-
+</center>
 
 ## Brachistochrone curve and Fermat's principle
 The figure that can be seen in the original paper can be viewed below.
