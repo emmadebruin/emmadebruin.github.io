@@ -103,7 +103,7 @@ The author of this paper has developed a Physics-Informed Neural Network (PINN) 
 
 In the case of the swingby trajectory, the physical loss function,  F is the equation for a thrust vector under gravitational foces: 
 
-![image](https://github.com/stevengdemunck/docs/blob/main/assets/css/Screenshot%202024-04-08%20at%2022.50.59.png)
+![image](/images/Screenshot%202024-04-08%20at%2022.50.59.png)
 
 In our case, the constraint loss incorporates the boundary conditions of the problem and takes the initial conditions into account. These initial conditions are that the position starts at (x0,y0) = (-1,-1) at t=0 are and ends at (x1,y1) = (1,1).
 
