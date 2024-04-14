@@ -120,7 +120,7 @@ The author of this paper has developed a Physics-Informed Neural Network (PINN) 
 In the case of the swingby trajectory, the physical loss function,  F is the equation for a thrust vector under gravitational foces: 
 
 <center>
-<img src="/images/Screenshot%202024-04-08%20at%2022.50.59.png" width="400">
+<img src="/images/Screenshot%202024-04-08%20at%2022.50.59.png" width="500">
 </center>
 
 In our case, the constraint loss incorporates the boundary conditions of the problem and takes the initial conditions into account. These initial conditions are that the position starts at (x0,y0) = (-1,-1) at t=0 are and ends at (x1,y1) = (1,1).
@@ -128,7 +128,7 @@ In our case, the constraint loss incorporates the boundary conditions of the pro
 Each of these losses is then assigned weights to formulate a total loss. The weights for the physical and constraint losses are both set to 1, serving as hyperparameters determined by the author. Initially, Adam optimization is applied for 2000 epochs with a learning rate of 0.001. The paper presents the image below, showing the path taken and plotting different gravitational forces and thrust against time.
 
 <center>
-<img src="https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/d6ac0116-7ca8-4aa6-bddb-98c913afc2dd" width="400">
+<img src="https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/d6ac0116-7ca8-4aa6-bddb-98c913afc2dd" width="500">
 </center>
 
 Similar to the pendulum reproduction scenario, the combination of L-BFGS and Adam proved ineffective. However, by adjusting the learning rate to 3*10^-3 and extending the number of epochs to 60000, we managed to replicate similar results.
@@ -136,25 +136,25 @@ Similar to the pendulum reproduction scenario, the combination of L-BFGS and Ada
 This first image shows the optimal path that should be taken to minimze thrust.
 
 <center>
-<img src="/images/Figure_1.png" width="400">
+<img src="/images/Figure_1.png" width="500">
 </center>
 
 This image shows the total gravitational forces over time. When the rocket is closest to a celestial body, it experiences higher gravitational forces. 
 
 <center>
-<img src="/images/gravity.png" width="400">
+<img src="/images/gravity.png" width="500">
 </center>
 
 Here, the the total amount of force required to take the path over time is plotted:
 
 <center>
-<img src="/images/Figure_6.png" width="400">
+<img src="/images/Figure_6.png" width="500">
 </center>
 
 Finally the total amount of added thrust is plotted over time. The values we obtained are higher when compared to the grapgh shown in the paper, this could be due to the fact that we did not implement the L-BGFS. 
 
 <center>
-<img src="/images/Figure_7.png" width="400">
+<img src="/images/Figure_7.png" width="500">
 </center>
 
 ## Conclusion
