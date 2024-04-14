@@ -47,6 +47,7 @@ The same was done for the angle of the pendulum. Five random seeds were used and
 
 ## Brachistochrone curve and Fermat's principle
 A physics informed neural network (PINN) is programmed to solve the problem of finding the shortest-time path connecting two given points were an analytical solution exits. For this, two experiments were conducted: Light path of the shortest time according to Fermat’s principle and the shortest time path under gravity according to the Brachistochrone curve. The figure that can be seen in the original paper can be viewed below.
+
 <img src="https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/f64f045b-f964-4a17-a007-55b21ab0fbd7" width="300">
 <img src="https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/d956d071-b40a-40c2-80b9-10bf4779c99f" width="400">
 
