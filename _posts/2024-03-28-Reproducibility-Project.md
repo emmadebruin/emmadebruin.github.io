@@ -47,8 +47,8 @@ The same was done for the angle of the pendulum. Five random seeds were used and
 
 ## Brachistochrone curve and Fermat's principle
 The figure that can be seen in the original paper can be viewed below.
-![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/f64f045b-f964-4a17-a007-55b21ab0fbd7)
-![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/d956d071-b40a-40c2-80b9-10bf4779c99f)
+![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/f64f045b-f964-4a17-a007-55b21ab0fbd7 =x350)
+![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/d956d071-b40a-40c2-80b9-10bf4779c99f =x350)
 
 A physics informed neural network (PINN) is programmed to solve the problem of finding the shortest-time path connecting two given points were an analytical solution exits. For this, two experiments were conducted: Light path of the shortest time according to Fermat’s principle and the shortest time path under gravity according to the Brachistochrone curve. 
 The 2D xy space contain a medium with a varying refractive index which has a sinusoidal profile with respect to the y-axis. Fermat’s principle states that light travels slower in a medium that contains a higher refractive index and that light travels between two points along the path that requires the least time [2]. In our experiment the refractive index is highest in the middle of the y-plane which would result in the light taking a more vertical direction. To find the shortest-time path using PINN the following governing equation is given by [1]
