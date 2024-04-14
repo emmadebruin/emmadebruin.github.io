@@ -60,25 +60,25 @@ The 2D xy space contain a medium with a varying refractive index which has a sin
 In case of the bird, the 2D xy space consists of a space where normal gravity applies and the bird can gain speed with gravitational energy only. Thus to get as quickly from the initial point (x0, y0) as (0, 1) to (1, 0) the bird is expected to follow brachistochrone path, which is not the shortest path distance wise but is the shortest path considering time as the bird is able to optimise the gaining of speed and the travelled distance. To find the shortest-time path that the bird should take using PINN the following governing equation is given by [1]
 
 <center>
-![image](/images/fbird.png)
+<img src="/images/fbird.png" width="400">
 </center>
 
 These governing equations are then used in the following equation to calculate the physical loss to minimise for each experiment
 
 <center>
-![image](/images/lbird_phys.png)
+<img src="/images/lbird_phys.png" width="400">
 </center>
 
 The boundary loss is calculated using Dirichlet boundary conditions, these imply a certain penalty for errors at given coordinates in the solution. For the two experiments these consist solely of the start and destination coordinates, so that the boundary loss aims to ensure a correct initial and final position. This is implemented using the following formula, where BC represents the boundary condition coordinates and u corresponds to either the initial (x, y) or the final (x, y)
 
 <center>
-![image](/images/lbird_bc.png)
+<img src="/images/lbird_bc.png" width="400">
 </center>
 
 The goal loss, which is used to find the solution that has the lowest loss in terms of the defined goal is given as
 
 <center>
-![image](/images/lbird_goal.png)
+<img src="/images/lbird_goal.png" width="400">
 </center>
 
 where T is the total time to reach the destination point
@@ -86,7 +86,7 @@ where T is the total time to reach the destination point
 All losses are then combined in the following equation, which aims to minimise the total combined loss, the weights are equal for both the experiments and are given as (1, 1, 0.01), respectively.
 
 <center>
-![image](/images/lbird_argmin.png)
+<img src="/images/lbird_argmin.png" width="400">
 </center>
 
 To determine the shortest-time path by using PINN, the initial conditions for the network are set. The time is normalized between 0 and 1, with an appropriate uniform grid such that a 1000 time points are present in the given domain. We created a small function which can add more points on the boundary points to aid in model training, were we ensured that more training points near the boundary still had all nonzero time positional derivatives.
@@ -103,7 +103,11 @@ After having trained the PINN neural network, it is trained with a L-BFGS optimi
 
 Using our trained PINN to generate the timepoints a 0 to 1 scale with a grid of a 100 total points yields the following two figures. What can be observed is that the bird shortest path deviates significantly form the analytical solution and does also not reach the final coordinate appropriately. The experiment with the shortest light path time yields an extremely similar final result when compared to the analytical solution. As we noted this difference, we rewrote our code to have a shared code base such that only the governing equation and boundary conditions differ, we then also ensured that all matrix computations gave the expected outputs and dimensions, and after correcting several issues, this still yielded the final plots as used in this blog. We have therefore concluded that we were unable to replicate the results for the bird.
 
-![image](/images/bird.png) ![image](/images/light.png) ![image](/images/bird_loss.png) ![image](/images/light_loss.png)
+<img src="/images/bird.png" width="350">
+<img src="/images/light.png" width="350">
+
+<img src="/images/bird_loss.png" width="350">
+<img src="/images/light_loss.png" width="350">
 
 
 ## Swingby
@@ -114,7 +118,7 @@ The author of this paper has developed a Physics-Informed Neural Network (PINN) 
 In the case of the swingby trajectory, the physical loss function,  F is the equation for a thrust vector under gravitational foces: 
 
 <center>
-![image](/images/Screenshot%202024-04-08%20at%2022.50.59.png)
+<img src="/images/Screenshot%202024-04-08%20at%2022.50.59.png" width="400">
 </center>
 
 In our case, the constraint loss incorporates the boundary conditions of the problem and takes the initial conditions into account. These initial conditions are that the position starts at (x0,y0) = (-1,-1) at t=0 are and ends at (x1,y1) = (1,1).
@@ -122,7 +126,7 @@ In our case, the constraint loss incorporates the boundary conditions of the pro
 Each of these losses is then assigned weights to formulate a total loss. The weights for the physical and constraint losses are both set to 1, serving as hyperparameters determined by the author. Initially, Adam optimization is applied for 2000 epochs with a learning rate of 0.001. The paper presents the image below, showing the path taken and plotting different gravitational forces and thrust against time.
 
 <center>
-![image](https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/d6ac0116-7ca8-4aa6-bddb-98c913afc2dd)
+<img src="https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/d6ac0116-7ca8-4aa6-bddb-98c913afc2dd" width="400">
 </center>
 
 Similar to the pendulum reproduction scenario, the combination of L-BFGS and Adam proved ineffective. However, by adjusting the learning rate to 3*10^-3 and extending the number of epochs to 60000, we managed to replicate similar results.
@@ -130,25 +134,25 @@ Similar to the pendulum reproduction scenario, the combination of L-BFGS and Ada
 This first image shows the optimal path that should be taken to minimze thrust.
 
 <center>
-![image](/images/Figure_1.png)
+<img src="/images/Figure_1.png" width="400">
 </center>
 
 This image shows the total gravitational forces over time. When the rocket is closest to a celestial body, it experiences higher gravitational forces. 
 
 <center>
-![image](/images/gravity.png)
+<img src="/images/gravity.png" width="400">
 </center>
 
 Here, the the total amount of force required to take the path over time is plotted:
 
 <center>
-![image](/images/Figure_6.png)
+<img src="/images/Figure_6.png" width="400">
 </center>
 
 Finally the total amount of added thrust is plotted over time. The values we obtained are higher when compared to the grapgh shown in the paper, this could be due to the fact that we did not implement the L-BGFS. 
 
 <center>
-![image](/images/Figure_7.png)
+<img src="/images/Figure_7.png" width="400">
 </center>
 
 ## Conclusion
