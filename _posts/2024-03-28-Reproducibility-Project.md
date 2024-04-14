@@ -46,39 +46,38 @@ The same was done for the angle of the pendulum. Five random seeds were used and
 </center>
 
 ## Brachistochrone curve and Fermat's principle
-The figure that can be seen in the original paper can be viewed below.
+A physics informed neural network (PINN) is programmed to solve the problem of finding the shortest-time path connecting two given points were an analytical solution exits. For this, two experiments were conducted: Light path of the shortest time according to Fermat’s principle and the shortest time path under gravity according to the Brachistochrone curve. The figure that can be seen in the original paper can be viewed below.
 <img src="https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/f64f045b-f964-4a17-a007-55b21ab0fbd7" width="300">
 <img src="https://github.com/emmadebruin/emmadebruin.github.io/assets/165269949/d956d071-b40a-40c2-80b9-10bf4779c99f" width="400">
 
-A physics informed neural network (PINN) is programmed to solve the problem of finding the shortest-time path connecting two given points were an analytical solution exits. For this, two experiments were conducted: Light path of the shortest time according to Fermat’s principle and the shortest time path under gravity according to the Brachistochrone curve. 
 The 2D xy space contain a medium with a varying refractive index which has a sinusoidal profile with respect to the y-axis. Fermat’s principle states that light travels slower in a medium that contains a higher refractive index and that light travels between two points along the path that requires the least time [2]. In our experiment the refractive index is highest in the middle of the y-plane which would result in the light taking a more vertical direction. To find the shortest-time path using PINN the following governing equation is given by [1].
 
 <center>
-<img src="/images/flight.png" width="400">
+<img src="/images/flight.png" height="50">
 </center>
 
 In case of the bird, the 2D xy space consists of a space where normal gravity applies and the bird can gain speed with gravitational energy only. Thus to get as quickly from the initial point (x0, y0) as (0, 1) to (1, 0) the bird is expected to follow brachistochrone path, which is not the shortest path distance wise but is the shortest path considering time as the bird is able to optimise the gaining of speed and the travelled distance. To find the shortest-time path that the bird should take using PINN the following governing equation is given by [1]
 
 <center>
-<img src="/images/fbird.png" width="400">
+<img src="/images/fbird.png" height="50">
 </center>
 
 These governing equations are then used in the following equation to calculate the physical loss to minimise for each experiment
 
 <center>
-<img src="/images/lbird_phys.png" width="400">
+<img src="/images/lbird_phys.png" height="50">
 </center>
 
 The boundary loss is calculated using Dirichlet boundary conditions, these imply a certain penalty for errors at given coordinates in the solution. For the two experiments these consist solely of the start and destination coordinates, so that the boundary loss aims to ensure a correct initial and final position. This is implemented using the following formula, where BC represents the boundary condition coordinates and u corresponds to either the initial (x, y) or the final (x, y)
 
 <center>
-<img src="/images/lbird_bc.png" width="400">
+<img src="/images/lbird_bc.png" height="50">
 </center>
 
 The goal loss, which is used to find the solution that has the lowest loss in terms of the defined goal is given as
 
 <center>
-<img src="/images/lbird_goal.png" width="400">
+<img src="/images/lbird_goal.png" height="50">
 </center>
 
 where T is the total time to reach the destination point
@@ -86,7 +85,7 @@ where T is the total time to reach the destination point
 All losses are then combined in the following equation, which aims to minimise the total combined loss, the weights are equal for both the experiments and are given as (1, 1, 0.01), respectively.
 
 <center>
-<img src="/images/lbird_argmin.png" width="400">
+<img src="/images/lbird_argmin.png" height="50">
 </center>
 
 To determine the shortest-time path by using PINN, the initial conditions for the network are set. The time is normalized between 0 and 1, with an appropriate uniform grid such that a 1000 time points are present in the given domain. We created a small function which can add more points on the boundary points to aid in model training, were we ensured that more training points near the boundary still had all nonzero time positional derivatives.
