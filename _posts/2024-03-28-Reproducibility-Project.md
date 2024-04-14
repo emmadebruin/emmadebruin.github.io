@@ -57,31 +57,31 @@ The 2D xy space contain a medium with a varying refractive index which has a sin
 <img src="/images/flight.png" height="50">
 </center>
 
-In case of the bird, the 2D xy space consists of a space where normal gravity applies and the bird can gain speed with gravitational energy only. Thus to get as quickly from the initial point (x0, y0) as (0, 1) to (1, 0) the bird is expected to follow brachistochrone path, which is not the shortest path distance wise but is the shortest path considering time as the bird is able to optimise the gaining of speed and the travelled distance. To find the shortest-time path that the bird should take using PINN the following governing equation is given by [1]
+In case of the bird, the 2D xy space consists of a space where normal gravity applies and the bird can gain speed with gravitational energy only. Thus to get as quickly from the initial point (x0, y0) as (0, 1) to (1, 0) the bird is expected to follow brachistochrone path, which is not the shortest path distance wise but is the shortest path considering time as the bird is able to optimise the gaining of speed and the travelled distance. To find the shortest-time path that the bird should take using PINN the following governing equation is given by [1].
 
 <center>
 <img src="/images/fbird.png" height="50">
 </center>
 
-These governing equations are then used in the following equation to calculate the physical loss to minimise for each experiment
+These governing equations are then used in the following equation to calculate the physical loss to minimise for each experiment.
 
 <center>
 <img src="/images/lbird_phys.png" height="50">
 </center>
 
-The boundary loss is calculated using Dirichlet boundary conditions, these imply a certain penalty for errors at given coordinates in the solution. For the two experiments these consist solely of the start and destination coordinates, so that the boundary loss aims to ensure a correct initial and final position. This is implemented using the following formula, where BC represents the boundary condition coordinates and u corresponds to either the initial (x, y) or the final (x, y)
+The boundary loss is calculated using Dirichlet boundary conditions, these imply a certain penalty for errors at given coordinates in the solution. For the two experiments these consist solely of the start and destination coordinates, so that the boundary loss aims to ensure a correct initial and final position. This is implemented using the following formula, where BC represents the boundary condition coordinates and u corresponds to either the initial (x, y) or the final (x, y).
 
 <center>
 <img src="/images/lbird_bc.png" height="50">
 </center>
 
-The goal loss, which is used to find the solution that has the lowest loss in terms of the defined goal is given as
+The goal loss, which is used to find the solution that has the lowest loss in terms of the defined goal is given as:
 
 <center>
 <img src="/images/lbird_goal.png" height="50">
 </center>
 
-where T is the total time to reach the destination point
+where T is the total time to reach the destination point.
 
 All losses are then combined in the following equation, which aims to minimise the total combined loss, the weights are equal for both the experiments and are given as (1, 1, 0.01), respectively.
 
@@ -103,11 +103,13 @@ After having trained the PINN neural network, it is trained with a L-BFGS optimi
 
 Using our trained PINN to generate the timepoints a 0 to 1 scale with a grid of a 100 total points yields the following two figures. What can be observed is that the bird shortest path deviates significantly form the analytical solution and does also not reach the final coordinate appropriately. The experiment with the shortest light path time yields an extremely similar final result when compared to the analytical solution. As we noted this difference, we rewrote our code to have a shared code base such that only the governing equation and boundary conditions differ, we then also ensured that all matrix computations gave the expected outputs and dimensions, and after correcting several issues, this still yielded the final plots as used in this blog. We have therefore concluded that we were unable to replicate the results for the bird.
 
+<center>
 <img src="/images/bird.png" width="350">
 <img src="/images/light.png" width="350">
 
 <img src="/images/bird_loss.png" width="350">
 <img src="/images/light_loss.png" width="350">
+</center>
 
 
 ## Swingby
