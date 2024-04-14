@@ -162,7 +162,7 @@ In this blog, we successfully reproduced four experiments shown in the paper "So
 
 We managed to recreate the light's analytical path using our PINN implementation. However, when the same PINN was used with a different loss function that was according to the one used for the bird, the created path for the bird was not the same as the analytical solution. The reason why our PINN implementation did manage to calculate the correct path for the light but not for the bird remains unknown to us.
 
-In the last situation, we could not exactly replicate the swingby trajectory, but got closeby. this was again due to the lack of information about the L-BFGS implementation. Running the Adam optimiser for more epochs did result in quite similar results. our network was not able to minimize thrust to a negligible amount, but it was certainly quite close. 
+In the last situation, we could not exactly replicate the swingby trajectory, but got closeby. This was again due to the lack of information about the L-BFGS implementation. Running the Adam optimiser for more epochs did result in quite similar results. Our network was not able to minimize thrust to a negligible amount, but it was certainly quite close. 
 
 
 
